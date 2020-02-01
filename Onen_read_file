@@ -1,0 +1,19 @@
+  def get_dish():
+   
+  dish = file.readline().strip()
+  cook_book[dish] = []
+  amount_ingridient = (file.readline())
+  for _ in range(int(amount_ingridient)):
+    ingridient_list = file.readline().strip().split(' | ')
+    cook_book[dish].append({'ingridient_name': ingridient_list[0], 'quantity': ingridient_list[1], 'measure': ingridient_list[2]})
+  return file.readline()
+
+cook_book = {}
+
+with open('список рецептов.txt', 'r') as file:
+  try:
+    result = get_dish()
+  except Exception:
+    result = ''
+  while len(result) != 0:
+    result = get_dish()
